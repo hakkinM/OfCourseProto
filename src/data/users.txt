@@ -1,0 +1,3 @@
+admin@example.com,admin123
+user@example.com,password123
+testing@application.com,nkjn43knkj23
