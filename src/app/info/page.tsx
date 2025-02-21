@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export default function InfoPage() {
 
       <h1 className="text-2xl mb-4">Welcome to the Information Page</h1>
       <p className="mb-4">🔥 This page contains information 🔥</p>
+      <Link href={"/mockCourse"}>Click to see Course</Link>
     </div>
   );
 }
