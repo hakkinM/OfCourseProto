@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import CommentSection from "../pages/comment_section";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -27,6 +28,14 @@ export default function InfoPage() {
     router.push("/login"); // Redirect to login page
   };
 
+  function getUser(): string {
+    return email ?? "Unknown";
+  }
+
+  function getCourse(): string {
+    return "diffis 1.";
+  }
+
   // Show nothing while checking authentication
   if (isLoading) return null;
 
@@ -45,6 +54,7 @@ export default function InfoPage() {
 
       <h1 className="text-2xl mb-4">Welcome to the Information Page</h1>
       <p className="mb-4">🔥 This page contains information 🔥</p>
+      < CommentSection user={getUser()} course={getCourse()} />
     </div>
   );
 }

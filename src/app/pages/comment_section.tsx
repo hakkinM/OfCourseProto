@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 /**
  * The comments section UI element.
  */
-const CommentSection = () => {
+const CommentSection = ({ user, course }: { user: string, course: string }) => {
 
     const [comments, setComments] = useState<Comment[]>([]);
     const [newComment, setNewComment] = useState<string>('');
@@ -29,14 +29,14 @@ const CommentSection = () => {
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!newComment.trim()) {  // Check if the comment is empty
+        if (!newComment.trim()) {
             return;
         }
 
         const newCommentData: Comment = {
             commentID: 0,
-            authorID: "Matti Meikäläinen",
-            courseID: "Diffis 1",
+            authorID: user,
+            courseID: course,
             content: newComment,
             likes: 0
         }
