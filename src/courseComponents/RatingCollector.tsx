@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Rating from "./Rating";
+import RatingComponent from "./Rating";
 
 const RatingCollector = () => {
   const ratingArr: string[] = [
@@ -10,16 +11,14 @@ const RatingCollector = () => {
   ];
 
   return (
-    <div className="p-2">
-      <h1>Click the stars to give your rating!</h1>
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th>Rating</th>
-          </tr>
-        </thead>
-        <tbody>{ratingArr.map((item) => Rating(item))}</tbody>
-      </table>
+    <div className="flex flex-col items-center p-4 rounded-lg shadow-md">
+      <p className="text-white">Click a star to give rating</p>
+      {ratingArr.map((rating) => (
+        <div className="flex flex-col gap-3">
+          <Rating name={rating} key={rating}></Rating>
+        </div>
+      ))}
+      <button className="btn">Send</button>
     </div>
   );
 };

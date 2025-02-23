@@ -1,21 +1,24 @@
 "use client";
 import Course from "@/courseComponents/Course";
-import Plaque from "@/courseComponents/Plaque";
-import Rating from "@/courseComponents/Rating";
-import RatingCollector from "@/courseComponents/RatingCollector";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const MockCoursePage = () => {
+  const router = useRouter();
   return (
-    <>
-      <div className="navbar bg-primary text-primary-content">
-        <button className="btn btn-ghost text-xl">OfCourse</button>
+    <div>
+      <div className="navbar bg-primary text-primary-content text-xl">
+        <button
+          className="btn btn-ghost text-2xl"
+          onClick={() => router.push("/info")}
+        >
+          OfCourse
+        </button>
       </div>
-      <div className="flex">
-        <Course name="Mock course"></Course>
+      <div className="bg-black">
+        <Course name="O1"></Course>
       </div>
-    </>
+    </div>
   );
 };
 
