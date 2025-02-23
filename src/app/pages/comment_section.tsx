@@ -63,7 +63,7 @@ const CommentSection = ({ user, course }: { user: string, course: string }) => {
     }
 
     return (
-        <div className="bg-gray-200 p-2 rounded-sm h-full w-full">
+        <div className="bg-gray-200 p-2 rounded-sm h-3/4 w-96">
             <div className="text-left text-black">
                 <h1 className="font-bold">
                     Comments:
@@ -97,7 +97,7 @@ export default CommentSection;
  */
 const CommentList = (comments: Comment[]) => {
     return (
-        <div className="max-w-md h-60 overflow-y-auto border rounded p-2">
+        <div className="max-w-md h-96 overflow-y-auto border rounded p-2">
             { comments.map(entry => CommentEntry(entry)) }
         </div>
     );
