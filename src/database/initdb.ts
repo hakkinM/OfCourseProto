@@ -2,7 +2,11 @@ import { openDb } from "./db";
 import fs from "fs";
 import path from "path";
 
-//File used to initiate the local database. Run from console with command: npx ts-node ./src/database/init.db
+/*
+File used to initiate the local database. Run from console with commands: 
+npm i sqlite3@latest
+npx ts-node ./src/database/initdb.ts
+*/
 
 async function initDb() {
     const dbPath = path.resolve("./src/database/OfcDatabase.sqlite");
