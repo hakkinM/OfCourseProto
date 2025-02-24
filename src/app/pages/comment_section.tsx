@@ -1,19 +1,17 @@
 "use client";
 
-import { Comment } from "@/app/types/comments";
+import { Review } from "@/app/types/review";
 import { useState, useEffect } from "react";
 
+
 /**
- * The comments section UI element.
- */
+
 const CommentSection = ({ user, course }: { user: string, course: string }) => {
 
     const [comments, setComments] = useState<Comment[]>([]);
     const [newComment, setNewComment] = useState<string>('');
 
-    /**
-     * Fetches comments from database.
-     */
+
     async function fetchComments() {
         fetch("/api/comments", { method: "GET" })
             .then((res) => res.json())
@@ -23,9 +21,6 @@ const CommentSection = ({ user, course }: { user: string, course: string }) => {
 
     useEffect(() => { fetchComments(); }, []);
 
-    /**
-     *  
-     */
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -90,11 +85,7 @@ const CommentSection = ({ user, course }: { user: string, course: string }) => {
 
 export default CommentSection;
 
-/**
- * Comment list UI element.
- * @param comments Comments that will be shown.
- * @returns 
- */
+
 const CommentList = (comments: Comment[]) => {
     return (
         <div className="max-w-md h-96 overflow-y-auto border rounded p-2">
@@ -103,11 +94,7 @@ const CommentList = (comments: Comment[]) => {
     );
 }
 
-/**
- * Individual comment UI element.
- * @param entry Comment that will be shown.
- * @returns 
- */
+
 const CommentEntry = (entry: Comment) => {
     return (
         <div key = {entry.commentID} className="border-b py-2 bg-white">
@@ -116,3 +103,4 @@ const CommentEntry = (entry: Comment) => {
         </div>
     );
 }
+*/

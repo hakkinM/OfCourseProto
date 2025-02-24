@@ -1,12 +1,17 @@
-export interface Comment {
-    commentID: number;
-    courseID: String;
-    authorID: String;
-    content: String;
-    likes: number;
+export interface Review {
+    reviewID: number,
+    courseID: number,
+    authorID: number,
+    overall: number,
+    methods: number,
+    workload: number,
+    difficulty: number,
+    comment: String,
+    likes: number,
 }
 
-export function validateComment(comment: Comment): Boolean {
+/**
+export function validateComment(comment: Review): Boolean {
     if (comment.authorID.length == 0) {
         console.log("Invalid comment: AuthorID cannot be empty.");
         return false;
@@ -21,4 +26,4 @@ export function validateComment(comment: Comment): Boolean {
     }
     return true;
 }
-
+*/

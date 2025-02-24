@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import { Comment } from "@/app/types/comments";
+import { Review } from "@/app/types/review";
 
 /**
  * This file contains all the functions used to work with the database.
@@ -8,62 +8,75 @@ import { Comment } from "@/app/types/comments";
 
 export async function openDb() {
     return open({
-        filename: "./src/database/comments.sqlite",
+        filename: "./src/database/OfcDatabase.sqlite",
         driver: sqlite3.Database
     })
 }
 
-export async function getAllComments(): Promise<Comment[]> {
+export async function getAllReviews(): Promise<Review[]> {
     const db = await openDb();
-    const comments = await db.all("SELECT * FROM comments");
+    const reviews = await db.all("SELECT * FROM Review");
 
     db.close();
 
-    return comments.map(entry => ({
-        commentID: entry.commentID as number,
-        courseID: entry.courseID as String,
-        authorID: entry.userID as String,
-        content: entry.text as String,
+    return reviews.map(entry => ({
+        reviewID: entry.reviewID as number,
+        courseID: entry.courseID as number,
+        authorID: entry.userID as number,
+        overall: entry.overall as number,
+        methods: entry.methods as number,
+        workload: entry.workload as number,
+        difficulty: entry.difficulty as number,
+        comment: entry.comment as String,
         likes: entry.likes as number
     }));
 }
 
-export async function createComment(newComment: Comment) {
+
+export async function createReview(newReview: Review) {
     
-    if (!(newComment.content.length > 0)) {
+    if (!(newReview.comment.length > 0)) {
         throw new Error("Invalid comment input.");
     }
     
     const db = await openDb();
 
     const newEntry = await db.run(
-        "INSERT INTO comments (userID, courseID, text, likes) VALUES (?, ?, ?, ?)",
-        [newComment.authorID,newComment.courseID,newComment.content,newComment.likes]
+        "INSERT INTO Review (userID, courseID, overall, methods, workload, difficulty, comment, likes) VALUES (?, ?, ?, ?)",
+        [
+            newReview.authorID,
+            newReview.courseID,
+            newReview.overall,
+            newReview.methods,
+            newReview.workload,
+            newReview.difficulty,
+            newReview.comment,
+            newReview.likes
+        ]
     );
 
     db.close();
 
     if (newEntry.changes == 0) {
-        throw new Error("Adding a comment failed");
+        throw new Error("Adding a review failed");
     } else {
-        console.log("Added a comment");
+        console.log("Added a review");
     }
 }
 
-export async function deleteComments(commentID: number) {
+export async function deleteReview(reviewID: number) {
     
     const db = await openDb();
     const deleteResult = await db.run(
         "DELETE FROM comments WHERE commentID = ?",
-        [commentID]
+        [reviewID]
     );
 
     db.close();
 
     if (deleteResult.changes == 0) {
-        throw new Error("No entry found with given commentID");
+        throw new Error("No entry found with given reviewID");
     } else {
-        console.log("Deleted comment with id: ", commentID);
+        console.log("Deleted review with id: ", reviewID);
     }
 }
-

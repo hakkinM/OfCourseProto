@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Comment } from "@/app/types/comments"
-import { getAllComments } from "@/database/db"
-import { createComment } from "@/database/db";
-import { validateComment } from "@/app/types/comments";
+import { Review } from "@/app/types/review"
+import { getAllReviews } from "@/database/db"
+import { createReview } from "@/database/db";
+import { validateComment } from "@/app/types/review";
 import { error } from "console";
 
 export async function GET(req: NextRequest) {
     try {
-        const comments: Comment[] = await getAllComments();
+        const comments: Review[] = await getAllReviews();
         return NextResponse.json(comments);
     } catch (error: unknown) {
         console.error("Error details:", error);
@@ -17,11 +17,11 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     try {
-        const comment: Comment = await req.json();
+        const comment: Review = await req.json();
         if (!validateComment(comment)) {
             throw new Error("Creating a comment failed.");
         }
-        createComment(comment);
+        createReview(comment);
         return NextResponse.json(comment, { status: 201 });
     } catch (error: unknown) {
         console.error("Error details:", error);
