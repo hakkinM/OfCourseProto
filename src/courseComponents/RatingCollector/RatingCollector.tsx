@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import Rating from "./Rating";
-import RatingComponent from "./Rating";
+import Rating from "../Rating/Rating";
 
 const RatingCollector = () => {
   const ratingArr: string[] = [

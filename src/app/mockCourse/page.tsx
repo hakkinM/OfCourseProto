@@ -1,5 +1,5 @@
 "use client";
-import Course from "@/courseComponents/Course";
+import Course from "@/courseComponents/Course/Course";
 import { useRouter } from "next/navigation";
 import React from "react";
 

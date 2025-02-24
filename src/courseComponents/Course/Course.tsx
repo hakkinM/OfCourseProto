@@ -3,8 +3,7 @@ interface CourseProps {
 }
 
 import React from "react";
-import Plaque from "./Plaque";
-import RatingCollector from "./RatingCollector";
+import RatingCollector from "../RatingCollector/RatingCollector";
 
 const Course = ({ name }: CourseProps) => {
   return (
