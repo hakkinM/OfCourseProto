@@ -9,6 +9,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        yellow: {
+          500: '#eab308'},
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
@@ -16,7 +18,7 @@ export default {
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: false,
+    themes: "night",
   },
 } satisfies Config;
 

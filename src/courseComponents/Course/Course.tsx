@@ -4,24 +4,19 @@ interface CourseProps {
 
 import React from "react";
 import RatingCollector from "../RatingCollector/RatingCollector";
+import Plaque from "../Plaque/Plaque";
 
 const Course = ({ name }: CourseProps) => {
   return (
-    <div className="relative">
+    <div className="relative w-full bg-black">
+      {/**Course name */}
       <div className="text-2xl font-semibold text-white p-4 w-full">{name}</div>
-      {/* Left Component */}
+      {/* Container for right and left components */}
       <div className="flex flex-row">
-        <div className="basis-3 p-4">
-          <p className="text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et.
-          </p>
-        </div>
+        <Plaque />
 
-        <div className="divider divider-primary lg:divider-horizontal"></div>
-
-        <div>
-          <RatingCollector></RatingCollector>
+        <div className="flex-1 flex items-center justify-center">
+          <RatingCollector />
         </div>
       </div>
     </div>
