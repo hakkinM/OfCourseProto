@@ -50,6 +50,7 @@ const LoginPage: React.FC = () => {
           className="border p-2 mb-3 text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <label className="mb-2">Password</label>
@@ -58,6 +59,7 @@ const LoginPage: React.FC = () => {
           className="border p-2 mb-4 text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <button type="submit" className="bg-blue-500 text-white py-2 rounded">

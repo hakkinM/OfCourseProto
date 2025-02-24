@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Toolbar } from "../components/toolbar";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -21,6 +22,7 @@ export default function InfoPage() {
     }
   }, []);
 
+  // logs user out when logout button is pressed
   const handleLogout = () => {
     localStorage.removeItem("loggedIn"); // Clear login state
     localStorage.removeItem("userEmail"); // Remove stored email
@@ -32,17 +34,7 @@ export default function InfoPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen">
-      {/* Email and Logout button in the top-right corner */}
-      <div className="absolute top-4 right-4 flex items-center space-x-4">
-        {email && <span className="text-gray-400">{email}</span>}
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white py-2 px-4 rounded"
-        >
-          Logout
-        </button>
-      </div>
-
+      <Toolbar onLogout={handleLogout} email={email} />
       <h1 className="text-2xl mb-4">Welcome to the Information Page</h1>
       <p className="mb-4">🔥 This page contains information 🔥</p>
     </div>
