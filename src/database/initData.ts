@@ -1,5 +1,5 @@
 import { createReview } from "./db";
-import { Review } from "@/app/types/review";
+import { Review } from "@/app/types/types";
 
 interface Comment {
   userID: number;

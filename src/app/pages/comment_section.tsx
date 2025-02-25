@@ -1,6 +1,6 @@
 "use client";
 
-import { Review } from "@/app/types/review";
+import { Review } from "@/app/types/types";
 import { useState, useEffect } from "react";
 
 

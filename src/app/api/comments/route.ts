@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Review } from "@/app/types/review"
+import { Review } from "@/app/types/types"
 import { getAllReviews } from "@/database/db"
 import { createReview } from "@/database/db";
-import { validateComment } from "@/app/types/review";
+import { validateComment } from "@/app/types/types";
 import { error } from "console";
 
 export async function GET(req: NextRequest) {
