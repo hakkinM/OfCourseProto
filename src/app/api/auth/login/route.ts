@@ -1,23 +1,22 @@
 import { NextResponse } from "next/server";
+import { getAllUsers } from "@/database/db";
+import { User } from "@/app/types/types";
 import fs from "fs";
 import path from "path";
-
-const USERS_FILE = path.join(process.cwd(), "src/data/users.txt");
 
 export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
-    // Read users.txt file
-    const fileContent = fs.readFileSync(USERS_FILE, "utf-8");
-    const users = fileContent.split("\n").map((line) => line.trim().split(","));
+    // Get users from database.
+    const users: User[] = await getAllUsers();
 
     // Find user in the file
-    const user = users.find(([storedEmail, storedPassword]) =>
-      storedEmail === email && storedPassword === password
+    const userVerif = users.find(user =>
+      user.email == email && user.password == password
     );
 
-    if (!user) {
+    if (!userVerif) {
       return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
     }
 
