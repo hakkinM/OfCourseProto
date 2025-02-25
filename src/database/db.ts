@@ -42,7 +42,7 @@ export async function createReview(newReview: Review) {
     const db = await openDb();
 
     const newEntry = await db.run(
-        "INSERT INTO Review (userID, courseID, overall, methods, workload, difficulty, comment, likes) VALUES (?, ?, ?, ?)",
+        "INSERT INTO Review (userID, courseID, overall, methods, workload, difficulty, comment, likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         [
             newReview.authorID,
             newReview.courseID,
