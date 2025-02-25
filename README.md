@@ -1,3 +1,14 @@
+IMPORTANT:
+New dependencies installed ->
+Run npm install in console when pulling.
+
+After that you need to initiate the local database. Do this by running command:
+npx ts-node ./src/database/initdb.ts
+This command compiles a .ts typescript file and executes it. ts-node is installed with npm install.
+
+src/database/comments.sqlite should exist now.
+Sql databases should not be uploaded to remote and therefore .sqlite is in .gitignore.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
