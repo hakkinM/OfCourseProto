@@ -30,6 +30,14 @@ export default function InfoPage() {
     router.push("/login"); // Redirect to login page
   };
 
+  function getUser(): string {
+    return email ?? "Unknown";
+  }
+
+  function getCourse(): string {
+    return "diffis 1.";
+  }
+
   // Show nothing while checking authentication
   if (isLoading) return null;
 
