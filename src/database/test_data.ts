@@ -124,4 +124,11 @@ async function testAll() {
     console.log("Tests finished")
 }
 
+async function users() {
+    const userList = await getAllUsers();
+    console.log("Users:")
+    printUserList(userList);
+}
+
+
 testAll();
