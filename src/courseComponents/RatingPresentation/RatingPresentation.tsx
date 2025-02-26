@@ -23,7 +23,7 @@ export async function getRatings() {
     workloadRatings,
   };
 
-  return { props: { ratings } };
+  return ratings;
 }
 
 function getRatingsMean(ratings: number[]) {
@@ -36,27 +36,22 @@ function getRatingsMean(ratings: number[]) {
   return mean;
 }
 
-function RatingPresentation({
-  overallRatings,
-  difficultyRatings,
-  methodsRatings,
-  workloadRatings,
-}: Ratings) {
+function RatingPresentation(ratings: Ratings) {
   const maxRating = 5;
 
   const reviews = getRatings();
 
   const [overAllRatingsMean, setOverallMean] = useState(
-    getRatingsMean(overallRatings)
+    getRatingsMean(ratings.overallRatings)
   );
   const [difficultyRatingsMean, setDifficultyMean] = useState(
-    getRatingsMean(difficultyRatings)
+    getRatingsMean(ratings.difficultyRatings)
   );
   const [methodsRatingsMean, setMethodsMean] = useState(
-    getRatingsMean(methodsRatings)
+    getRatingsMean(ratings.methodsRatings)
   );
   const [workloadRatingsMean, setRatingsMean] = useState(
-    getRatingsMean(workloadRatings)
+    getRatingsMean(ratings.workloadRatings)
   );
 
   return (
@@ -66,28 +61,28 @@ function RatingPresentation({
         <p>
           Course overall: {overAllRatingsMean}/{maxRating}
         </p>
-        <p>from {overallRatings.length} ratings</p>
+        <p>from {ratings.overallRatings.length} ratings</p>
       </div>
       {/*difficulty ratings*/}
       <div className="flex-1 items-center justify-center">
         <p>
           Course difficulty: {difficultyRatingsMean}/{maxRating}
         </p>
-        <p>from {difficultyRatings.length} ratings</p>
+        <p>from {ratings.difficultyRatings.length} ratings</p>
       </div>
       {/*methods ratings*/}
       <div className="flex-1 items-center justify-center">
         <p>
           Course methods: {methodsRatingsMean}/{maxRating}
         </p>
-        <p>from {methodsRatings.length} ratings</p>
+        <p>from {ratings.methodsRatings.length} ratings</p>
       </div>
       {/*workload ratings*/}
       <div className="flex-1 items-center justify-center">
         <p>
           Course workload: {workloadRatingsMean}/{maxRating}
         </p>
-        <p>from {workloadRatings.length} ratings</p>
+        <p>from {ratings.workloadRatings.length} ratings</p>
       </div>
     </div>
   );

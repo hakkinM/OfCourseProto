@@ -17,7 +17,14 @@ const Course = ({ name }: CourseProps) => {
       {/* Container for right and left components */}
       <div className="flex flex-row">
         <Plaque />
-        <RatingPresentation overallRatings={} />
+        {getRatings().then((ratings) => (
+          <RatingPresentation
+            overallRatings={ratings.overallRatings}
+            difficultyRatings={ratings.difficultyRatings}
+            methodsRatings={ratings.methodsRatings}
+            workloadRatings={ratings.workloadRatings}
+          />
+        ))}
       </div>
     </div>
   );
