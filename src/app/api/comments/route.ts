@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Review } from "@/app/types/types"
-import { getAllReviews } from "@/database/db"
-import { createReview } from "@/database/db";
-import { error } from "console";
+import { createReview, getAllReviews } from "@/database/db";
 
-/**
 export async function GET(req: NextRequest) {
     try {
         const comments: Review[] = await getAllReviews();
@@ -18,15 +15,10 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
     try {
         const comment: Review = await req.json();
-        if (!validateComment(comment)) {
-            throw new Error("Creating a comment failed.");
-        }
         createReview(comment);
-        return NextResponse.json(comment, { status: 201 });
+        return NextResponse.json({ status: 201 });
     } catch (error: unknown) {
         console.error("Error details:", error);
         return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
     }
 }
-
-*/
