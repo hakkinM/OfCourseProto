@@ -32,6 +32,12 @@ export async function getAllReviews(): Promise<Review[]> {
     }));
 }
 
+export async function getAllReviewsByLikes() {
+    const reviews = await getAllReviews();
+    return reviews.sort((a,b) => b.likes - a.likes);
+}
+
+
 export async function getAllUsers(): Promise<User[]> {
     const db = await openDb();
     const users = await db.all("SELECT * FROM Users");
