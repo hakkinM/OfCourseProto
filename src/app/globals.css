@@ -5,11 +5,9 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-}
+  color: var(--foreground);
+  background: var(--background);
 
-
-/*
-root
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,8 +19,7 @@ root
     --foreground: #ededed;
   }
 }
+}
+/*
 
-body
-  color: var(--foreground);
-  background: var(--background);
 */

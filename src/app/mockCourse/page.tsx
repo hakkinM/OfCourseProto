@@ -9,7 +9,14 @@ const MockCoursePage = () => {
   return (
     <div>
       {/*Navigation bar*/}
-      <Navbar />
+      <div className="navbar bg-primary text-primary-content text-xl">
+        <button
+          className="btn btn-ghost text-2xl"
+          onClick={() => router.push("/info")}
+        >
+          OfCourse
+        </button>
+      </div>
       {/*Site content*/}
       <Course name="O1"></Course>
     </div>
