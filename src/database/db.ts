@@ -32,6 +32,22 @@ export async function getAllReviews(): Promise<Review[]> {
     }));
 }
 
+export async function getAllReviewsByLikes() {
+    const reviews = await getAllReviews();
+    return reviews.sort((a,b) => b.likes - a.likes);
+}
+
+export async function voteReview(reviewID: number, vote: number) {
+    const db = await openDb();
+    if (vote > 0) {
+        await db.run("UPDATE Reviews SET likes = likes + 1 WHERE reviewID = ?",reviewID)
+    } else if (vote < 0) {
+        await db.run("UPDATE Reviews SET likes = likes - 1 WHERE reviewID = ?",reviewID)
+    }
+    db.close();
+}
+
+
 export async function getAllUsers(): Promise<User[]> {
     const db = await openDb();
     const users = await db.all("SELECT * FROM Users");
@@ -46,8 +62,14 @@ export async function getAllUsers(): Promise<User[]> {
     }));
 }
 
+export async function getUserByID(userID: number) {
+    const users = await getAllUsers();
+    return users.find(user => user.userID == userID);
+}
+
+
 export async function createReview(newReview: Review) {
-    
+
     const db = await openDb();
 
     const newEntry = await db.run(
@@ -74,7 +96,7 @@ export async function createReview(newReview: Review) {
 }
 
 export async function createUser(newUser: User) {
-    
+
     const db = await openDb();
 
     const newEntry = await db.run(
@@ -96,7 +118,7 @@ export async function createUser(newUser: User) {
 }
 
 export async function deleteReview(reviewID: number) {
-    
+
     const db = await openDb();
     const deleteResult = await db.run(
         "DELETE FROM Reviews WHERE reviewID = ?",
@@ -113,7 +135,7 @@ export async function deleteReview(reviewID: number) {
 }
 
 export async function deleteUser(userID: number) {
-    
+
     const db = await openDb();
     const deleteResult = await db.run(
         "DELETE FROM Users WHERE userID = ?",
