@@ -4,18 +4,18 @@ Run npm install in console when pulling.
 
 After that you need to initiate the local database. Do this by running command:
 ```
-npx ts-node ./scripts/initdb.ts
+npx ts-node ./src/database/initdb.ts
 ```
 This command compiles a .ts typescript file and executes it. ts-node is installed with npm install.
 
 Test data can be generated with
 ```
-npx ts-node ./scripts/initData.ts
+npx ts-node ./src/database/initData.ts
 ```
 
 Database can be tested with
 ```
-npx ts-node ./scripts/test_data.ts
+npx ts-node ./src/database/test_data.ts
 ```
 
 src/database/comments.sqlite should exist now.
