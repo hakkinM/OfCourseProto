@@ -5,6 +5,9 @@ interface CourseProps {
 import React from "react";
 import RatingCollector from "../RatingCollector/RatingCollector";
 import Plaque from "../Plaque/Plaque";
+import RatingPresentation, {
+  getRatings,
+} from "../RatingPresentation/RatingPresentation";
 
 const Course = ({ name }: CourseProps) => {
   return (
@@ -14,10 +17,7 @@ const Course = ({ name }: CourseProps) => {
       {/* Container for right and left components */}
       <div className="flex flex-row">
         <Plaque />
-
-        <div className="flex-1 flex items-center justify-center">
-          <RatingCollector />
-        </div>
+        <RatingPresentation overallRatings={} />
       </div>
     </div>
   );
