@@ -37,6 +37,16 @@ export async function getAllReviewsByLikes() {
     return reviews.sort((a,b) => b.likes - a.likes);
 }
 
+export async function voteReview(reviewID: number, vote: number) {
+    const db = await openDb();
+    if (vote > 0) {
+        await db.run("UPDATE Reviews SET likes = likes + 1 WHERE reviewID = ?",reviewID)
+    } else if (vote < 0) {
+        await db.run("UPDATE Reviews SET likes = likes - 1 WHERE reviewID = ?",reviewID)
+    }
+    db.close();
+}
+
 
 export async function getAllUsers(): Promise<User[]> {
     const db = await openDb();
@@ -51,6 +61,12 @@ export async function getAllUsers(): Promise<User[]> {
         password: entry.password as string
     }));
 }
+
+export async function getUserByID(userID: number) {
+    const users = await getAllUsers();
+    return users.find(user => user.userID == userID);
+}
+
 
 export async function createReview(newReview: Review) {
     
