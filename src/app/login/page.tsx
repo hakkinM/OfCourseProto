@@ -19,20 +19,30 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("userEmail", email);
-      router.push("/info");
-    } else {
-      setError(data.message);
+      if (response.ok) {
+        // Store user data in localStorage
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("userName", data.user.username);
+        localStorage.setItem("userID", data.user.userId.toString());
+
+        router.push("/info");
+      } else {
+        // Handle login error
+        setError(data.message);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
     }
   };
 
@@ -50,6 +60,7 @@ const LoginPage: React.FC = () => {
           className="border p-2 mb-3 text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <label className="mb-2">Password</label>
@@ -58,6 +69,7 @@ const LoginPage: React.FC = () => {
           className="border p-2 mb-4 text-black"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <button type="submit" className="bg-blue-500 text-white py-2 rounded">

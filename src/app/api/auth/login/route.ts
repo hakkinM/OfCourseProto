@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
-import { getAllUsers } from "@/database/db";
 import { User } from "@/app/types/types";
-import fs from "fs";
-import path from "path";
+import { getAllUsers } from "@/database/db";
 
 export async function POST(req: Request) {
   try {
@@ -12,15 +10,22 @@ export async function POST(req: Request) {
     const users: User[] = await getAllUsers();
 
     // Find user in the file
-    const userVerif = users.find(user =>
+    const currentUser = users.find(user =>
       user.email == email && user.password == password
     );
 
-    if (!userVerif) {
+    if (!currentUser) {
       return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
     }
 
-    return NextResponse.json({ message: "Login successful" }, { status: 200 });
+    // Return user data (excluding sensitive information like password)
+    return NextResponse.json({
+      message: "Login successful",
+      user: {
+        username: currentUser.username,
+        userId: currentUser.userID
+      }
+    }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "Server error" }, { status: 500 });
   }
