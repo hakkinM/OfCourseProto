@@ -10,17 +10,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        yellow: {
-          500: '#eab308'},
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
     },
   },
   plugins: [daisyui],
-  daisyui: {
-    themes: "night",
-  },
+  
 } satisfies Config;
 
 /*

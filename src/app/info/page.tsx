@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Toolbar } from "../components/toolbar";
 import { ReviewInput } from "../components/reviewInput/reviewInput";
 import ReviewWindow from "../pages/review-section";
+import Course from "@/courseComponents/Course/Course";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function InfoPage() {
   return (
     <div className="relative flex flex-col items-center justify-center h-screen">
       <Toolbar onLogout={handleLogout} userName={userName} />
+      <Course name="O1" />
       <ReviewInput />
       <ReviewWindow />
     </div>
