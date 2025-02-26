@@ -47,7 +47,7 @@ export async function getAllUsers(): Promise<User[]> {
 }
 
 export async function createReview(newReview: Review) {
-    
+
     const db = await openDb();
 
     const newEntry = await db.run(
@@ -74,7 +74,7 @@ export async function createReview(newReview: Review) {
 }
 
 export async function createUser(newUser: User) {
-    
+
     const db = await openDb();
 
     const newEntry = await db.run(
@@ -96,7 +96,7 @@ export async function createUser(newUser: User) {
 }
 
 export async function deleteReview(reviewID: number) {
-    
+
     const db = await openDb();
     const deleteResult = await db.run(
         "DELETE FROM Reviews WHERE reviewID = ?",
@@ -113,7 +113,7 @@ export async function deleteReview(reviewID: number) {
 }
 
 export async function deleteUser(userID: number) {
-    
+
     const db = await openDb();
     const deleteResult = await db.run(
         "DELETE FROM Users WHERE userID = ?",

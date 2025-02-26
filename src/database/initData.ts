@@ -62,6 +62,9 @@ const testReviews: Review[] = [
   },
 ];
 
+// CHECK IF USER HAS ALREADY CREATED TEST DATA!!
+// If test data is created twice, the console will be ridden with mystical errors.
+
 async function create() {
   console.log("Creating test data");
   clearTable("Users");
