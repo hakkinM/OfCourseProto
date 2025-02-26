@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import StarRating from "./startRating";
+import { Review } from "@/app/types/types";
+import { createReview } from "@/database/db";
 
 const ReviewInput = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -17,6 +19,40 @@ const ReviewInput = () => {
     setDifficulty(0);
     setOverall(0);
     setComment("");
+    setIsOpen(false);
+  };
+
+  const handleSubmit = async () => {
+    const userId = Number(localStorage.getItem("userID"));
+    const review: Review = {
+      reviewID: Date.now(),
+      courseID: 101,
+      authorID: userId,
+      overall: overall,
+      methods: methods,
+      workload: workload,
+      difficulty: difficulty,
+      comment: comment,
+      likes: 0,
+    };
+
+    try {
+      const response = await fetch("/api/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(review),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error("Failed to submit review:", error);
+    }
+
+    resetAllStates();
   };
 
   return (
@@ -91,11 +127,7 @@ const ReviewInput = () => {
               </button>
               <button
                 className="px-4 py-2 bg-green-500 text-white rounded"
-                onClick={() => {
-                  resetAllStates();
-                  setIsOpen(false);
-                  // TODO: IMPLEMENT THE INFORMATION SUBMISSION HERE!
-                }}
+                onClick={() => handleSubmit()}
               >
                 Submit
               </button>

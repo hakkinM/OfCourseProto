@@ -8,17 +8,17 @@ import { ReviewInput } from "../components/reviewInput/reviewInput";
 export default function InfoPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [email, setEmail] = useState<string | null>(null); // State to store user email
+  const [userName, setUserName] = useState<string | null>(null); // State to store user email
 
   useEffect(() => {
     // Ensure code only runs in the browser
     const loggedIn = localStorage.getItem("loggedIn") === "true";
-    const storedEmail = localStorage.getItem("userEmail"); // Get email from localStorage
+    const storedUserName = localStorage.getItem("userName"); // Get username from localStorage
 
     if (!loggedIn) {
       router.push("/login");
     } else {
-      setEmail(storedEmail); // Set email in state
+      setUserName(storedUserName); // Set email in state
       setIsLoading(false); // Allow rendering once authentication check is complete
     }
   }, []);
@@ -26,24 +26,17 @@ export default function InfoPage() {
   // logs user out when logout button is pressed
   const handleLogout = () => {
     localStorage.removeItem("loggedIn"); // Clear login state
-    localStorage.removeItem("userEmail"); // Remove stored email
+    localStorage.removeItem("userName"); // Remove stored email
+    localStorage.removeItem("userID"); // Remove stored userID
     router.push("/login"); // Redirect to login page
   };
-
-  function getUser(): string {
-    return email ?? "Unknown";
-  }
-
-  function getCourse(): string {
-    return "diffis 1.";
-  }
 
   // Show nothing while checking authentication
   if (isLoading) return null;
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen">
-      <Toolbar onLogout={handleLogout} email={email} />
+      <Toolbar onLogout={handleLogout} userName={userName} />
       <ReviewInput />
     </div>
   );
