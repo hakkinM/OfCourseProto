@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Toolbar } from "../components/toolbar";
 import { ReviewInput } from "../components/reviewInput/reviewInput";
+import ReviewWindow from "../pages/review-section";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -38,6 +39,8 @@ export default function InfoPage() {
     <div className="relative flex flex-col items-center justify-center h-screen">
       <Toolbar onLogout={handleLogout} userName={userName} />
       <ReviewInput />
+      <ReviewWindow/>
     </div>
+
   );
 }

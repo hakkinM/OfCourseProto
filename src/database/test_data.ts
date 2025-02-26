@@ -130,5 +130,10 @@ async function users() {
     printUserList(userList);
 }
 
+async function reviews() {
+    const reviewList = await getAllReviews();
+    console.log("Reviews:")
+    printReviewList(reviewList);
+}
 
-testAll();
+reviews();

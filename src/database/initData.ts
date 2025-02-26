@@ -26,7 +26,7 @@ const testUsers: User[] = [
   },
 ];
 
-const testReviews: Review[] = [
+export const testReviews: Review[] = [
   {
     reviewID: 1,
     courseID: 101,
