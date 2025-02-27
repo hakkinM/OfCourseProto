@@ -12,7 +12,9 @@ const Course = ({ name }: CourseProps) => {
   return (
     <div className="relative w-full bg-inherit">
       {/**Course name */}
-      <div className="text-2xl font-semibold text-white p-4 w-full">{name}</div>
+      <div className="text-2xl font-semibold bg-gray-900 text-white p-4 w-full">
+        {name}
+      </div>
 
       {/* Container for right and left components */}
       <div className="flex flex-row">

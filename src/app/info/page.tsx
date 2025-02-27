@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Toolbar } from "../components/toolbar";
-import { ReviewInput } from "../components/reviewInput/reviewInput";
 import ReviewWindow from "../pages/review-section";
-import Course from "@/courseComponents/Course/Course";
+import Course from "@/app/components/courseComponents/Course/Course";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -38,7 +36,7 @@ export default function InfoPage() {
   if (isLoading) return null;
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-black">
       <Toolbar onLogout={handleLogout} userName={userName} />
       <Course name="O1" />
       <ReviewWindow />

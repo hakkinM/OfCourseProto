@@ -31,17 +31,17 @@ function RatingPresentation() {
     );
 
   return (
-    <div className="flex-1 w-full">
+    <div className="flex flex-col p-4">
       <div className="w-full flex flex-row text-white">
         {/*Overall ratings*/}
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
+        <div className="w-full p-4 rounded-lg text-center">
           <p>
             Course overall: {getRatingsMean(ratings.overallRatings)}/{maxRating}
           </p>
           <p>from {ratings.overallRatings.length} ratings</p>
         </div>
         {/*difficulty ratings*/}
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
+        <div className="w-full p-4 rounded-lg text-center">
           <p>
             Course difficulty: {getRatingsMean(ratings.difficultyRatings)}/
             {maxRating}
@@ -52,14 +52,14 @@ function RatingPresentation() {
 
       <div className="w-full flex flex-row text-white">
         {/*methods ratings*/}
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
+        <div className="p-4 rounded-lg text-center">
           <p>
             Course methods: {getRatingsMean(ratings.methodsRatings)}/{maxRating}
           </p>
           <p>from {ratings.methodsRatings.length} ratings</p>
         </div>
         {/*workload ratings*/}
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
+        <div className="p-4 rounded-lg text-center">
           <p>
             Course workload: {getRatingsMean(ratings.workloadRatings)}/
             {maxRating}
