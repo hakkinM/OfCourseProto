@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Toolbar } from "../components/toolbar";
-import { ReviewInput } from "../components/reviewInput/reviewInput";
 import ReviewWindow from "../pages/review-section";
+import Course from "@/app/components/courseComponents/Course/Course";
 
 export default function InfoPage() {
   const router = useRouter();
@@ -36,11 +36,10 @@ export default function InfoPage() {
   if (isLoading) return null;
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col h-full bg-black">
       <Toolbar onLogout={handleLogout} userName={userName} />
-      <ReviewInput />
-      <ReviewWindow/>
+      <Course name="O1" />
+      <ReviewWindow />
     </div>
-
   );
 }

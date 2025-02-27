@@ -16,3 +16,10 @@ export interface User {
     username: String,
     password: String,
 }
+
+export interface Ratings {
+    overallRatings: number[];
+    difficultyRatings: number[];
+    methodsRatings: number[];
+    workloadRatings: number[];
+  }

@@ -57,7 +57,7 @@ const LoginPage: React.FC = () => {
         <label className="mb-2">Email</label>
         <input
           type="email"
-          className="border p-2 mb-3 text-black"
+          className="border p-2 mb-3 bg-inherit text-inherit"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -66,7 +66,7 @@ const LoginPage: React.FC = () => {
         <label className="mb-2">Password</label>
         <input
           type="password"
-          className="border p-2 mb-4 text-black"
+          className="border p-2 mb-4 bg-inherit text-inherit"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

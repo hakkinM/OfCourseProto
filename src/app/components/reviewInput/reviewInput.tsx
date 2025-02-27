@@ -58,7 +58,7 @@ const ReviewInput = () => {
   return (
     <div className="">
       <button
-        className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+        className="px-4 py-2 bg-blue-500 text-black rounded-lg"
         onClick={() => {
           setIsOpen(true);
         }}
@@ -109,7 +109,7 @@ const ReviewInput = () => {
                 id="comment"
                 value={comment}
                 onChange={(event) => setComment(event.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                 rows={4}
                 placeholder="Write your feedback here..."
               />
