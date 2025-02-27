@@ -38,10 +38,9 @@ export default function InfoPage() {
   if (isLoading) return null;
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col h-full">
       <Toolbar onLogout={handleLogout} userName={userName} />
       <Course name="O1" />
-      <ReviewInput />
       <ReviewWindow />
     </div>
   );

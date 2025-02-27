@@ -6,6 +6,7 @@ import React from "react";
 import RatingCollector from "../RatingCollector/RatingCollector";
 import Plaque from "../Plaque/Plaque";
 import RatingPresentation from "../RatingPresentation/RatingPresentation";
+import { ReviewInput } from "@/app/components/reviewInput/reviewInput";
 
 const Course = ({ name }: CourseProps) => {
   return (
@@ -14,9 +15,12 @@ const Course = ({ name }: CourseProps) => {
       <div className="text-2xl font-semibold text-white p-4 w-full">{name}</div>
 
       {/* Container for right and left components */}
-      <div className="flex flex-col">
+      <div className="flex flex-row">
         <Plaque />
-        <RatingPresentation />
+        <div className="flex flex-col items-center">
+          <RatingPresentation />
+          <ReviewInput />
+        </div>
       </div>
     </div>
   );
