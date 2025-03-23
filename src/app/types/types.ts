@@ -23,3 +23,10 @@ export interface Ratings {
     methodsRatings: number[];
     workloadRatings: number[];
   }
+
+export interface Course {
+    courseID: number,
+    courseCode: String,
+    courseName: String,
+    description: String,
+}

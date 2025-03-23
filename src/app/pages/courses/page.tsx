@@ -72,15 +72,15 @@ const CourseListPage = () => {
             <h2 className="font-semibold mb-2">Suodata kursseja:</h2>
             <div className="mb-2">
               <label className="block text-sm">Laitos:</label>
-              <input className="w-full border rounded px-2 py-1" defaultValue="Matematiikan laitos" />
+              <input className="w-full border rounded px-2 py-1 bg-white text-black" defaultValue="Matematiikan laitos" />
             </div>
             <div className="mb-2">
               <label className="block text-sm">Periodi:</label>
-              <input className="w-full border rounded px-2 py-1" />
+              <input className="w-full border rounded px-2 py-1 bg-white text-black" />
             </div>
             <div>
               <label className="block text-sm">Taso:</label>
-              <input className="w-full border rounded px-2 py-1" defaultValue="Kandidaatintutkinto" />
+              <input className="w-full border rounded px-2 py-1 bg-white text-black" defaultValue="Kandidaatintutkinto" />
             </div>
           </div>
         </aside>
@@ -110,11 +110,11 @@ export default CourseListPage;
 
 const CourseList = ({ courses }: { courses: Course[] }) => {
   return (
-    <>
+    <div className="max-h-[500px] overflow-y-auto">
       {courses.map((course) => (
         <CourseEntry key={course.courseID} course={course} />
       ))}
-    </>
+    </div>
   );
 };
 
