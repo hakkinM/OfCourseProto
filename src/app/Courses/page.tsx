@@ -123,7 +123,7 @@ const CourseEntry = ({ course }: { course: Course }) => {
 
   return (
     <button
-      onClick={() => router.push(`/course/${course.courseCode}`)}
+      onClick={() => router.push(`/Courses/${course.courseCode}`)}
       className="w-full text-left border rounded p-4 bg-white shadow-sm hover:bg-gray-50 cursor-pointer"
     >
       <h3 className="font-semibold">
