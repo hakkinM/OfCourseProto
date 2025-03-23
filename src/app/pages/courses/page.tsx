@@ -2,10 +2,20 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Course } from '@/app/types/types';
 
 const CourseListPage = () => {
   const [search, setSearch] = useState('');
   const router = useRouter();
+
+  const testCourse: Course[] = [
+    {
+      courseID: 123,
+      courseCode: 'MS-A0204',
+      courseName: 'Differentiaali- ja integraalilaskenta 2',
+      description: "yes",
+    }
+  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-black">
@@ -53,21 +63,7 @@ const CourseListPage = () => {
           </div>
 
           {/* Course Cards */}
-          {[
-            { code: 'MS-A0204', name: 'Differentiaali- ja integraalilaskenta 2', views: 150, reviews: 18 },
-            { code: 'MS-A0001', name: 'Matriisilaskenta', views: 130, reviews: 19 },
-            { code: 'MS-A0401', name: 'Diskreetin matematiikan perusteet', views: 112, reviews: 11 },
-            { code: 'MS-A0304', name: 'Differentiaali- ja integraalilaskenta 3', views: 70, reviews: 13 },
-          ].map((course) => (
-            <div
-              key={course.code}
-              className="border rounded p-4 bg-white shadow-sm hover:bg-gray-50 cursor-pointer"
-            >
-              <h3 className="font-semibold">{course.code} {course.name}</h3>
-              <p>Katselukerrat: {course.views}</p>
-              <p>Arviointeja: {course.reviews}</p>
-            </div>
-          ))}
+          <CourseList courses={testCourse} />
         </section>
 
         {/* Filter Sidebar */}
@@ -111,3 +107,30 @@ const CourseListPage = () => {
 };
 
 export default CourseListPage;
+
+const CourseList = ({ courses }: { courses: Course[] }) => {
+  return (
+    <>
+      {courses.map((course) => (
+        <CourseEntry key={course.courseID} course={course} />
+      ))}
+    </>
+  );
+};
+
+const CourseEntry = ({ course }: { course: Course }) => {
+  const router = useRouter();
+
+  return (
+    <button
+      onClick={() => router.push(`/course/${course.courseCode}`)}
+      className="w-full text-left border rounded p-4 bg-white shadow-sm hover:bg-gray-50 cursor-pointer"
+    >
+      <h3 className="font-semibold">
+        {course.courseCode} {course.courseName}
+      </h3>
+      <p>Katselukerrat: 123</p>
+      <p>Arviointeja: 123</p>
+    </button>
+  );
+};
