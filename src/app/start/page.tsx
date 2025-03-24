@@ -15,7 +15,7 @@ export default function HomePage() {
         <div className="space-x-2">
           <button
             className="bg-gray-300 px-4 py-1 rounded"
-            onClick={() => router.push('/pages/profile')}
+            onClick={() => router.push('/profile')}
           >
             Profiili
           </button>

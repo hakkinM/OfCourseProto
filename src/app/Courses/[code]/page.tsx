@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
+import { ReviewInput } from '@/app/components/reviewInput/reviewInput';
 
 const CoursePage = () => {
   const { code } = useParams(); // code = 'MS-A0204' for example
@@ -21,9 +22,7 @@ const CoursePage = () => {
             Kurssilla tutustutaan usean muuttujan differentiaali- ja integraalilaskennan perusteisiin...
           </p>
 
-          <button className="mt-4 px-4 py-2 border rounded bg-white hover:bg-gray-100">
-            Jätä arvostelu!
-          </button>
+          <ReviewInput/>
         </div>
 
         {/* Rating summary */}
