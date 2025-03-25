@@ -4,6 +4,7 @@ import { useState } from "react";
 import StarRating from "./startRating";
 import { Review } from "@/app/types/types";
 import { createReview } from "@/database/db";
+import HoverInfo from "../additional/hoverInfo";
 
 const ReviewInput = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -69,49 +70,52 @@ const ReviewInput = () => {
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-black">
-            <h2 className="text-lg font-bold mb-4">Enter information</h2>
+            <h2 className="text-lg font-bold mb-4">Arvostele kurssi</h2>
             {/* star container */}
             <div className="space-y-2 p-4">
               <div className="flex items-center space-x-3">
                 <div className="w-32">
-                  <p>Overall</p>
+                  <p>Yleisarvosana</p>
                 </div>
                 <StarRating selected={overall} setSelected={setOverall} />
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-32">
-                  <p>Methodologies</p>
+                  <p>Toimintatavat</p>
                 </div>
                 <StarRating selected={methods} setSelected={setMethods} />
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-32">
-                  <p>Workload</p>
+                  <p>Työmäärä</p>
                 </div>
                 <StarRating selected={workload} setSelected={setWorkload} />
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-32">
-                  <p>Difficulty</p>
+                  <p>Vaikeustaso</p>
                 </div>
                 <StarRating selected={difficulty} setSelected={setDifficulty} />
+                
               </div>
+              <HoverInfo/>
             </div>
+            <DropDownSelection/>
             {/* comment container*/}
             <div className="mt-4">
               <label
                 htmlFor="comment"
                 className="block text-lg font-medium mb-2"
               >
-                Additional Feedback:
+                Kommentti:
               </label>
               <textarea
                 id="comment"
                 value={comment}
                 onChange={(event) => setComment(event.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black"
                 rows={4}
-                placeholder="Write your feedback here..."
+                placeholder="Olen sitä mieltä, että..."
               />
             </div>
             {/* Cancel and submit container */}
@@ -140,3 +144,37 @@ const ReviewInput = () => {
 };
 
 export { ReviewInput };
+
+
+
+const DropDownSelection = () => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <p>Kuuluuko kurssi pääaineeseen?</p>
+        <select
+          className="w-full border rounded px-2 py-1 bg-white text-black"
+        >
+          <option>En kerro</option>
+          <option>Kyllä</option>
+          <option>Ei</option>
+        </select>
+      </div>
+      <div>
+        <p>Minkä arvosanan sait?</p>
+        <select
+          className="w-full border rounded px-2 py-1 bg-white text-black"
+        >
+          <option>En kerro</option>
+          <option>5</option>
+          <option>4</option>
+          <option>3</option>
+          <option>2</option>
+          <option>1</option>
+          <option>0 / hylätty</option>
+        </select>
+      </div>
+    </div>
+  );
+};
+

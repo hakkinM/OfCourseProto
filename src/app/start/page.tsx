@@ -51,7 +51,7 @@ export default function HomePage() {
         {/* Education Level */}
         <div className="bg-blue-200 px-6 py-2 rounded font-medium">Valitse koulutustaso</div>
         <div className="flex gap-12">
-          <button className="w-32 h-32 rounded-full bg-blue-200 text-xl font-semibold" onClick={() => router.push('/pages/courses')}>Kandi</button>
+          <button className="w-32 h-32 rounded-full bg-blue-200 text-xl font-semibold" onClick={() => router.push('/Courses')}>Kandi</button>
           <button className="w-32 h-32 rounded-full bg-blue-200 text-xl font-semibold">Maisteri</button>
         </div>
       </main>

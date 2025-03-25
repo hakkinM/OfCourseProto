@@ -25,7 +25,7 @@ const CourseListPage = () => {
           OfCourse&gt;Kandi&gt;Sivuaine&gt;SCI&gt;Matematiikka
         </h1>
         <div className="space-x-2">
-          <button className="bg-gray-300 px-4 py-1 rounded" onClick={() => router.push('/pages/profile')}>Profiili</button>
+          <button className="bg-gray-300 px-4 py-1 rounded" onClick={() => router.push('/profile')}>Profiili</button>
           <button className="bg-gray-600 text-white px-4 py-1 rounded">Kirjaudu ulos</button>
         </div>
       </header>
