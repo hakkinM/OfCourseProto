@@ -128,3 +128,6 @@ const ReviewWindow = ({ pageID }: { pageID: number }) => {
 
 
 export default ReviewWindow;
+
+
+//<div className="w-full h-full border rounded-lg p-4 shadow-md bg-gray-50 overflow-auto">

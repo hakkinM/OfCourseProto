@@ -3,10 +3,12 @@
 import Image from "next/image"
 import { ThumbsUp, ThumbsDown } from "lucide-react"
 import { Header, Footer } from "@/app/components/headerAndfooter/headerfooter"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { testModules } from "@/app/components/test"
 import { invalidModule } from "@/app/components/test"
 import ReviewWindow from "@/app/pages/review-section"
+import { ReviewModuleInput } from "@/app/components/reviewInput/reviewInput"
+import RatingPresentation from "@/app/components/courseComponents/RatingPresentation/RatingPresentation"
 
 const comments = [
   {
@@ -30,6 +32,7 @@ const ratings = [
 
 const ModuleDetail = () => {
   const { name } = useParams();
+  const router = useRouter();
 
   const module = testModules.find((m) => (m.moduleName == name)) ?? invalidModule;
 
@@ -55,25 +58,16 @@ const ModuleDetail = () => {
             </p>
 
             <div className="flex gap-2 pt-2">
-              <button className="bg-white px-3 py-1.5 border rounded-md hover:bg-gray-50 text-sm">
+              <button className="bg-white px-3 py-1.5 border rounded-md hover:bg-gray-50 text-sm" onClick={() => router.push("/Courses")}>
                 Katso kurssit
               </button>
-              <button className="bg-white px-3 py-1.5 border rounded-md hover:bg-gray-50 text-sm">
-                Arvostele sivuaine
-              </button>
+              <ReviewModuleInput/>
             </div>
           </div>
           <div className="text-sm text-right space-y-1 min-w-[160px]">
-            {ratings.map((r) => (
-              <div key={r.label}>
-                <span className="font-medium">{r.label}</span>{" "}
-                <span className="text-yellow-500">{Array(r.value).fill("★").join("")}</span>
-                <span className="text-gray-500 ml-1">{r.count}</span>
-              </div>
-            ))}
+            <RatingPresentation/>
           </div>
         </div>
-
         {/* Comments Section */}
         <div className="border rounded-lg bg-[#f3f6ff] p-4">
             <ReviewWindow pageID={module.moduleID} />
@@ -81,28 +75,22 @@ const ModuleDetail = () => {
       </main>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default ModuleDetail
 
 
-/**
- *           <div className="space-y-2">
-            {comments.map((c, i) => (
-              <div
-                key={i}
-                className="bg-white border rounded-md p-3 flex gap-3 items-start"
-              >
-                <div className="flex-1 text-sm text-gray-800 leading-snug">
-                  {c.text}
-                </div>
-                <div className="flex flex-col items-center text-xs min-w-[30px]">
-                  <ThumbsUp className="text-green-600" size={16} />
-                  <span className="font-semibold">{c.upvotes}</span>
-                  <ThumbsDown className="text-red-600" size={16} />
-                </div>
+//<RatingPresentation />
+
+
+/*
+            {ratings.map((r) => (
+              <div key={r.label}>
+                <span className="font-medium">{r.label}</span>{" "}
+                <span className="text-yellow-500">{Array(r.value).fill("★").join("")}</span>
+                <span className="text-gray-500 ml-1">{r.count}</span>
               </div>
             ))}
-          </div>
- */
+*/
+

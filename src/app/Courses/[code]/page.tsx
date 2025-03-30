@@ -2,79 +2,53 @@
 
 import { useParams } from 'next/navigation';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
-import { ReviewInput } from '@/app/components/reviewInput/reviewInput';
+import { ReviewCourseInput } from '@/app/components/reviewInput/reviewInput';
+import Image from "next/image"
+import { Header, Footer } from "@/app/components/headerAndfooter/headerfooter"
+import { testModules } from "@/app/components/test"
+import { invalidModule } from "@/app/components/test"
+import ReviewWindow from "@/app/pages/review-section"
+import RatingPresentation from "@/app/components/courseComponents/RatingPresentation/RatingPresentation"
 
 const CoursePage = () => {
   const { code } = useParams(); // code = 'MS-A0204' for example
+  const module = testModules.find((m) => (m.moduleName == code)) ?? invalidModule;
 
   return (
-    <div className="min-h-screen bg-gray-100 text-black p-4 space-y-6">
-      {/* Back button */}
-      <div className="text-lg mb-4">← Takaisin</div>
+    <div className="min-h-screen flex flex-col bg-white text-black">
+      <Header />
 
-      {/* Header section */}
-      <div className="bg-blue-100 p-6 rounded flex gap-6 items-start">
-        <div className="min-w-[200px] h-[200px] bg-gray-300 rounded-lg"></div>
+      <main className="flex-1 max-w-5xl mx-auto px-4 py-6 space-y-4">
+        {/* Module Overview */}
+        <div className="border rounded-lg bg-[#f3f6ff] p-4 flex flex-col md:flex-row items-start gap-4">
+          <Image
+            src="/module-image.jpg"
+            alt="Module"
+            width={140}
+            height={140}
+            className="rounded object-cover"
+          />
 
-        <div className="flex-1">
-          <h2 className="text-xl font-semibold">{code} Differentiaali- ja integraalilaskenta 2</h2>
-          <p className="mt-2 text-sm">
-            Kurssilla tutustutaan usean muuttujan differentiaali- ja integraalilaskennan perusteisiin...
-          </p>
+          <div className="flex-1 space-y-1">
+            <h2 className="text-lg font-semibold">{module.moduleName}</h2>
+            <p className="text-sm text-gray-700 leading-snug">
+              Tämän sivuaineen suorittamalla opiskelijat voivat kehittää matemaattista ajatteluaan ja ongelmanratkaisutaitoja, sekä oppia matematiikan ja tilastotieteen menetelmiä, joista on hyötyä tieteessä, teknologiassa, taiteissa ja kauppatieteissä.
+            </p>
 
-          <ReviewInput/>
-        </div>
-
-        {/* Rating summary */}
-        <div className="min-w-[250px] space-y-1 text-sm">
-          <p>Yleisarvosana ⭐⭐⭐⭐☆ 340</p>
-          <p>Toimintatavat* ⭐⭐⭐⭐☆ 337</p>
-          <p>Työmäärä** ⭐⭐☆☆☆ 329</p>
-          <p>Vaikeustaso*** ⭐⭐⭐☆☆ 334</p>
-          <p className="text-xs mt-2">
-            * kuinka hyvin kurssin toimintatavat tukivat oppimistasi<br />
-            ** 3/5 = 27 h/op<br />
-            *** 3/5 = keskitaso
-          </p>
-        </div>
-      </div>
-
-      {/* Feedback section */}
-      <div className="bg-blue-100 p-4 rounded">
-        <h3 className="text-md font-semibold mb-3">Avoimet palautteet (12 kpl)</h3>
-
-        <div className="bg-white p-3 rounded flex items-start justify-between mb-2">
-          <div className="flex gap-3">
-            <div className="w-12 h-12 rounded-full bg-gray-300"></div>
-            <div>
-              <p className="font-semibold">Matikkavelho22 🏅 🚨 🏆</p>
-              <p className="text-sm">
-                Kurssi tarjosi syvällistä ymmärrystä laskennan menetelmistä...
-              </p>
+            <div className="flex gap-2 pt-2">
+              <ReviewCourseInput/>
             </div>
           </div>
-          <div className="flex items-center gap-1 text-green-600">
-            <ThumbsUp />
-            <span className="font-semibold text-black">+34</span>
+          <div className="text-sm text-right space-y-1 min-w-[160px]">
+            <RatingPresentation/>
           </div>
         </div>
-
-        <div className="bg-white p-3 rounded flex items-start justify-between">
-          <div className="flex gap-3">
-            <div className="w-12 h-12 rounded-full bg-gray-300"></div>
-            <div>
-              <p className="font-semibold">TrolliUkko ☕💀</p>
-              <p className="text-sm">
-                Kurssi tuntui enemmän selviytymiskokeelta kuin matematiikalta...
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-1 text-red-600">
-            <ThumbsDown />
-            <span className="font-semibold text-black">-22</span>
-          </div>
+        {/* Comments Section */}
+        <div className="border rounded-lg bg-[#f3f6ff] p-4">
+            <ReviewWindow pageID={module.moduleID} />
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 };

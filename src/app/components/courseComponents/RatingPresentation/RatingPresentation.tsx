@@ -32,7 +32,7 @@ function RatingPresentation() {
 
   return (
     <div className="flex flex-col p-4">
-      <div className="w-full flex flex-row text-white">
+      <div className="w-full flex flex-row text-black">
         {/*Overall ratings*/}
         <div className="w-full p-4 rounded-lg text-center">
           <p>
@@ -50,7 +50,7 @@ function RatingPresentation() {
         </div>
       </div>
 
-      <div className="w-full flex flex-row text-white">
+      <div className="w-full flex flex-row text-black">
         {/*methods ratings*/}
         <div className="p-4 rounded-lg text-center">
           <p>
