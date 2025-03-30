@@ -61,11 +61,11 @@ const ModuleDetail = () => {
               <button className="bg-white px-3 py-1.5 border rounded-md hover:bg-gray-50 text-sm" onClick={() => router.push("/Courses")}>
                 Katso kurssit
               </button>
-              <ReviewModuleInput/>
+              <ReviewModuleInput pageID={module.moduleID}/>
             </div>
           </div>
           <div className="text-sm text-right space-y-1 min-w-[160px]">
-            <RatingPresentation/>
+            <RatingPresentation pageID = {module.moduleID}/>
           </div>
         </div>
         {/* Comments Section */}

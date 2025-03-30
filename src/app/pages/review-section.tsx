@@ -108,7 +108,7 @@ const ReviewWindow = ({ pageID }: { pageID: number }) => {
   async function fetchReviews() {
     fetch("/api/reviews", { method: "GET" })
       .then((res) => res.json())
-      .then((data: Review[]) => setReviews(data))
+      .then((data: Review[]) => setReviews(data.filter(r => (r.pageID == pageID))))
       .catch((error) => console.error("Error fetching reviews: ", error));
   }
 

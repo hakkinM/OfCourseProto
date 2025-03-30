@@ -3,98 +3,62 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Course } from '@/app/types/types';
+import { Header, Footer } from "@/app/components/headerAndfooter/headerfooter"
+import { CheckCircle, Search, SlidersHorizontal } from "lucide-react"
+import { testCourses } from '../components/test';
 
 const CourseListPage = () => {
   const [search, setSearch] = useState('');
   const router = useRouter();
 
-  const testCourse: Course[] = [
-    {
-      courseID: 123,
-      courseCode: 'MS-A0204',
-      courseName: 'Differentiaali- ja integraalilaskenta 2',
-      description: "yes",
-    }
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black">
-      {/* Header */}
-      <header className="bg-blue-200 p-4 flex justify-between items-center">
-        <h1 className="text-lg font-semibold">
-          OfCourse&gt;Kandi&gt;Sivuaine&gt;SCI&gt;Matematiikka
-        </h1>
-        <div className="space-x-2">
-          <button className="bg-gray-300 px-4 py-1 rounded" onClick={() => router.push('/profile')}>Profiili</button>
-          <button className="bg-gray-600 text-white px-4 py-1 rounded">Kirjaudu ulos</button>
+    <div className="min-h-screen flex flex-col text-black bg-white">
+      <Header />
+      <main className="flex-1 px-6 py-8">
+        <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
+          <h1 className="text-2xl font-bold">Hae kursseja</h1>
+
+          {/* Search + Filters toggle */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-2 border border-gray-300 rounded-lg px-4 py-2 shadow-sm bg-white w-full sm:max-w-md">
+              <Search size={20} className="text-gray-400" />
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Hae kursseja..."
+                className="w-full outline-none text-sm bg-white text-black"
+              />
+            </div>
+
+            <div className="flex gap-2">
+              <button
+                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-100 transition"
+              >
+                <SlidersHorizontal size={16} />
+                Suodattimet
+              </button>
+
+              <button
+                className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+              >
+                Hae
+              </button>
+            </div>
+          </div>
+
+          {/* Results */}
+          <div className="mt-4">
+            <h2 className="text-lg font-semibold mb-2">Tulokset</h2>
+            <CourseList courses={testCourses}/>
+          </div>
         </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="flex flex-1 px-4 py-6 gap-6">
-
-        {/* Course List */}
-        <section className="flex-1 space-y-4 overflow-y-auto">
-          {/* Search & Filters */}
-          <div className="flex items-center space-x-2">
-            <input
-              type="text"
-              placeholder="Hae kursseja"
-              className="border border-gray-400 px-4 py-2 rounded w-80 bg-white text-black"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button className="bg-black text-white px-4 py-2 rounded">Etsi</button>
-          </div>
-          <div className="flex space-x-2">
-            <button className="bg-gray-200 px-4 py-1 rounded">Eniten arvosteluja</button>
-            <button className="bg-gray-200 px-4 py-1 rounded">Uusimmat</button>
-            <button className="bg-gray-200 px-4 py-1 rounded">Katsotuimmat</button>
-          </div>
-
-          {/* Course Cards */}
-          <CourseList courses={testCourse} />
-        </section>
-
-        {/* Filter Sidebar */}
-        <aside className="w-1/5 space-y-4">
-          <div className="border p-4 rounded">
-            <h2 className="font-semibold mb-2">Suodata kursseja:</h2>
-            <div className="mb-2">
-              <label className="block text-sm">Laitos:</label>
-              <input className="w-full border rounded px-2 py-1 bg-white text-black" defaultValue="Matematiikan laitos" />
-            </div>
-            <div className="mb-2">
-              <label className="block text-sm">Periodi:</label>
-              <input className="w-full border rounded px-2 py-1 bg-white text-black" />
-            </div>
-            <div>
-              <label className="block text-sm">Taso:</label>
-              <input className="w-full border rounded px-2 py-1 bg-white text-black" defaultValue="Kandidaatintutkinto" />
-            </div>
-          </div>
-        </aside>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-blue-200 p-4 flex justify-between items-center text-sm">
-        <div>
-          <p>OfCourse</p>
-          <p>Tietoa</p>
-          <p>Käyttöehdot</p>
-          <p>Yhteystiedot</p>
-        </div>
-        <div className="text-center text-xs font-bold border border-black px-4 py-2 rounded-full">
-          You problem with course? Don't worry, OfCourse!
-        </div>
-        <div className="text-right">
-          <p>mycourses.aalto.fi</p>
-          <p>sisu.aalto.fi</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
-  );
-};
+  )
+}
 
 export default CourseListPage;
 

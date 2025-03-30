@@ -6,7 +6,7 @@ import { Review } from "@/app/types/types";
 import { createReview } from "@/database/db";
 import HoverInfo from "../additional/hoverInfo";
 
-const ReviewCourseInput = () => {
+const ReviewCourseInput = ( { pageID }: { pageID: number } ) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [methods, setMethods] = useState<number>(0);
   const [workload, setWorkload] = useState<number>(0);
@@ -27,8 +27,8 @@ const ReviewCourseInput = () => {
     const userId = Number(localStorage.getItem("userID"));
     const review: Review = {
       reviewID: Date.now(),
-      pageID: 101,
-      authorID: userId,
+      pageID: pageID,
+      authorID: 1,
       overall: overall,
       methods: methods,
       workload: workload,
@@ -59,7 +59,7 @@ const ReviewCourseInput = () => {
   return (
     <div className="">
       <button
-        className="px-4 py-2 bg-blue-500 text-black rounded-lg"
+        className="bg-white px-3 py-1.5 border rounded-md hover:bg-gray-50 text-sm"
         onClick={() => {
           setIsOpen(true);
         }}
@@ -131,7 +131,7 @@ const ReviewCourseInput = () => {
               </button>
               <button
                 className="px-4 py-2 bg-green-500 text-white rounded"
-                //onClick={() => handleSubmit()}
+                onClick={() => handleSubmit()}
               >
                 Submit
               </button>
@@ -143,7 +143,7 @@ const ReviewCourseInput = () => {
   );
 };
 
-const ReviewModuleInput = () => {
+const ReviewModuleInput = ( { pageID }: { pageID: number } ) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [methods, setMethods] = useState<number>(0);
   const [workload, setWorkload] = useState<number>(0);
@@ -161,11 +161,12 @@ const ReviewModuleInput = () => {
   };
 
   const handleSubmit = async () => {
+    console.log("pageID: ", pageID);
     const userId = Number(localStorage.getItem("userID"));
     const review: Review = {
       reviewID: Date.now(),
-      pageID: 101,
-      authorID: userId,
+      pageID: pageID,
+      authorID: 1,
       overall: overall,
       methods: methods,
       workload: workload,
@@ -264,7 +265,7 @@ const ReviewModuleInput = () => {
               </button>
               <button
                 className="px-4 py-2 bg-green-500 text-white rounded"
-                //onClick={() => handleSubmit()}
+                onClick={() => handleSubmit()}
               >
                 Submit
               </button>

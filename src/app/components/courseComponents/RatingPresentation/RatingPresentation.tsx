@@ -4,24 +4,34 @@ import { Ratings } from "@/app/types/types";
 function getRatingsMean(ratings: number[]) {
   const length = ratings.length;
   const mean = (
-    ratings.reduce((acc, next) => {
-      return acc + next;
-    }, 0) / length
+    ratings.reduce((acc, next) => acc + next, 0) / length
   ).toFixed(1);
 
-  return mean;
+  return parseFloat(mean); // return as number, not string
 }
 
-function RatingPresentation() {
+const StarRating = ({ value, max }: { value: number; max: number }) => {
+  const fullStars = Math.round(value);
+  return (
+    <div className="flex justify-center gap-1">
+      {[...Array(max)].map((_, i) => (
+        <span key={i}>{i < fullStars ? "★" : "☆"}</span>
+      ))}
+    </div>
+  );
+};
+
+
+const RatingPresentation = ({ pageID }: { pageID: number }) => {
   const maxRating = 5;
   const [ratings, setRatings] = useState<Ratings | null>(null);
 
   useEffect(() => {
-    fetch("/api/ratings", { method: "GET", next: { revalidate: 10 } })
+    fetch(`/api/ratings?pageID=${pageID}`, { method: "GET" })
       .then((res) => res.json())
       .then((data: Ratings) => setRatings(data))
       .catch((error) => console.error("Failed to fetch ratings:", error));
-  }, []);
+  }, [pageID]);
 
   if (!ratings)
     return (
@@ -31,44 +41,36 @@ function RatingPresentation() {
     );
 
   return (
-    <div className="flex flex-col p-4">
-      <div className="w-full flex flex-row text-black">
-        {/*Overall ratings*/}
-        <div className="w-full p-4 rounded-lg text-center">
-          <p>
-            Course overall: {getRatingsMean(ratings.overallRatings)}/{maxRating}
-          </p>
-          <p>from {ratings.overallRatings.length} ratings</p>
+    <div className="flex flex-col items-center p-4 text-black">
+      <div className="space-y-4">
+        <div className="text-center">
+          <p>Course overall:</p>
+          <StarRating value={getRatingsMean(ratings.overallRatings)} max={maxRating} />
         </div>
-        {/*difficulty ratings*/}
-        <div className="w-full p-4 rounded-lg text-center">
-          <p>
-            Course difficulty: {getRatingsMean(ratings.difficultyRatings)}/
-            {maxRating}
-          </p>
-          <p>from {ratings.difficultyRatings.length} ratings</p>
+
+        <div className="text-center">
+          <p>Course difficulty:</p>
+          <StarRating value={getRatingsMean(ratings.difficultyRatings)} max={maxRating} />
+        </div>
+
+        <div className="text-center">
+          <p>Course methods:</p>
+          <StarRating value={getRatingsMean(ratings.methodsRatings)} max={maxRating} />
+        </div>
+
+        <div className="text-center">
+          <p>Course workload:</p>
+          <StarRating value={getRatingsMean(ratings.workloadRatings)} max={maxRating} />
         </div>
       </div>
 
-      <div className="w-full flex flex-row text-black">
-        {/*methods ratings*/}
-        <div className="p-4 rounded-lg text-center">
-          <p>
-            Course methods: {getRatingsMean(ratings.methodsRatings)}/{maxRating}
-          </p>
-          <p>from {ratings.methodsRatings.length} ratings</p>
-        </div>
-        {/*workload ratings*/}
-        <div className="p-4 rounded-lg text-center">
-          <p>
-            Course workload: {getRatingsMean(ratings.workloadRatings)}/
-            {maxRating}
-          </p>
-          <p>from {ratings.workloadRatings.length} ratings</p>
-        </div>
-      </div>
+      <p className="mt-6 text-sm text-gray-600">
+        Based on {ratings.overallRatings.length} reviews
+      </p>
     </div>
   );
-}
+};
+
+
 
 export default RatingPresentation;

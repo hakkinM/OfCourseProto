@@ -8,9 +8,9 @@ import { Review, User } from "@/app/types/types";
 const testUsers: User[] = [
   {
     userID: 1,
-    email: "alice@example.com",
-    username: "alice123",
-    password: "securepass1",
+    email: "velho@mail.com",
+    username: "MatikkaVelho",
+    password: "velho",
   },
   {
     userID: 2,
