@@ -102,7 +102,7 @@ const ReviewList = ({ reviews }: { reviews: Review[] }) => {
   );
 };
 
-const ReviewWindow = () => {
+const ReviewWindow = ({ pageID }: { pageID: number }) => {
   const [reviews, setReviews] = useState<Review[]>([]);
 
   async function fetchReviews() {
@@ -117,13 +117,14 @@ const ReviewWindow = () => {
   }, []);
 
   return (
-    <div className="max-w-lg mx-auto m-10">
-      <h1 className="text-xl font-bold mb-4">Reviews</h1>
-      <div className="border rounded-lg p-4 shadow-md bg-gray-50 max-h-96 overflow-hidden">
+    <div className="w-full h-full p-6">
+      <h1 className="text-xl font-bold mb-4">Reviews:</h1>
+      <div className="w-full h-full border rounded-lg p-4 shadow-md bg-gray-50 overflow-auto">
         <ReviewList reviews={reviews} />
       </div>
     </div>
   );
 };
+
 
 export default ReviewWindow;

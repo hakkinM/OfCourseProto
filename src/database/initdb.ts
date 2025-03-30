@@ -30,7 +30,7 @@ async function initDb() {
         CREATE TABLE IF NOT EXISTS Reviews (
             reviewID INTEGER PRIMARY KEY AUTOINCREMENT,
             userID INTEGER NOT NULL,
-            courseID INTEGER NOT NULL,
+            pageID INTEGER NOT NULL,
             overall INTEGER NOT NULL,
             methods INTEGER NOT NULL,
             workload INTEGER NOT NULL,

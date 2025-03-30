@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import MajorSelector from '../components/test';
+import MajorSelector from '../components/find';
 import { Header, Footer } from '../components/headerAndfooter/headerfooter';
 
 export default function HomePage() {
@@ -24,7 +24,7 @@ export default function HomePage() {
             Etsi
           </button>
           <button
-            onClick={() => router.push("/Courses")}
+            onClick={() => router.push("/Modules")}
             className="w-full bg-gray-100 text-gray-900 font-semibold py-3 rounded-lg hover:bg-gray-200 transition"
           >
             Selaa kokonaisuuksia

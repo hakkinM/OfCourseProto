@@ -1,6 +1,6 @@
 export interface Review {
     reviewID: number,
-    courseID: number,
+    pageID: number,
     authorID: number,
     overall: number,
     methods: number,
@@ -28,5 +28,11 @@ export interface Course {
     courseID: number,
     courseCode: String,
     courseName: String,
+    description: String,
+}
+
+export interface Module {
+    moduleID: number,
+    moduleName: String,
     description: String,
 }

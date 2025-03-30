@@ -9,7 +9,7 @@ import { deleteReview, deleteUser, clearTable } from "../database/db"
 //Also all tests are async functions. Only run one async function at a time to ensure that tests are executed sequentally.
 
 function printReview(review: Review) {
-    console.log("Review: ", review.reviewID, ", ", review.authorID, ", ", review.courseID, ", ", review.overall, ", ", review.methods, ", ", review.workload, ", ", review.difficulty, ", ", review.comment, ", ", review.likes);
+    console.log("Review: ", review.reviewID, ", ", review.authorID, ", ", review.pageID, ", ", review.overall, ", ", review.methods, ", ", review.workload, ", ", review.difficulty, ", ", review.comment, ", ", review.likes);
 }
 
 function printUser(user: User) {
@@ -77,7 +77,7 @@ async function reviewTest() {
 
     const testReview = {
         reviewID: 1,
-        courseID: 101,
+        pageID: 101,
         authorID: 1,
         overall: 5,
         methods: 4,

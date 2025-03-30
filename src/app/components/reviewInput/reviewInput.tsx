@@ -27,7 +27,7 @@ const ReviewInput = () => {
     const userId = Number(localStorage.getItem("userID"));
     const review: Review = {
       reviewID: Date.now(),
-      courseID: 101,
+      pageID: 101,
       authorID: userId,
       overall: overall,
       methods: methods,

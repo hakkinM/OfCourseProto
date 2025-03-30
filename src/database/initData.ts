@@ -29,7 +29,7 @@ const testUsers: User[] = [
 export const testReviews: Review[] = [
   {
     reviewID: 1,
-    courseID: 101,
+    pageID: 101,
     authorID: 1,
     overall: 5,
     methods: 4,
@@ -40,7 +40,7 @@ export const testReviews: Review[] = [
   },
   {
     reviewID: 2,
-    courseID: 102,
+    pageID: 102,
     authorID: 2,
     overall: 3,
     methods: 3,
@@ -51,7 +51,7 @@ export const testReviews: Review[] = [
   },
   {
     reviewID: 3,
-    courseID: 101,
+    pageID: 101,
     authorID: 3,
     overall: 4,
     methods: 5,

@@ -32,16 +32,6 @@ const CourseListPage = () => {
 
       {/* Main Content */}
       <main className="flex flex-1 px-4 py-6 gap-6">
-        {/* Sidebar */}
-        <aside className="w-1/5 space-y-4">
-          <button className="text-left text-lg">← Takaisin</button>
-          <div className="bg-blue-100 p-4 rounded">
-            <h2 className="font-bold mb-2">Tervetuloa!</h2>
-            <p className="text-sm">
-              Täältä löydät kurssitiedot ja vertaisten palautteet mistä tahansa kurssista vain muutamalla klikkauksella.
-            </p>
-          </div>
-        </aside>
 
         {/* Course List */}
         <section className="flex-1 space-y-4 overflow-y-auto">

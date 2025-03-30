@@ -1,6 +1,6 @@
 'use client';
 
-import MajorSelector from '../components/test';
+import MajorSelector from '../components/find';
 import { Header, Footer } from '../components/headerAndfooter/headerfooter';
 
 const FindPage = () => {

@@ -21,7 +21,27 @@ export async function getAllReviews(): Promise<Review[]> {
 
     return reviews.map(entry => ({
         reviewID: entry.reviewID as number,
-        courseID: entry.courseID as number,
+        pageID: entry.pageID as number,
+        authorID: entry.userID as number,
+        overall: entry.overall as number,
+        methods: entry.methods as number,
+        workload: entry.workload as number,
+        difficulty: entry.difficulty as number,
+        comment: entry.comment as string,
+        likes: entry.likes as number
+    }));
+}
+
+
+export async function getAllReviewsByID(pageID: number): Promise<Review[]> {
+    const db = await openDb();
+    const reviews = await db.all("SELECT * FROM Reviews WHERE pageID = ?",pageID);
+
+    db.close();
+
+    return reviews.map(entry => ({
+        reviewID: entry.reviewID as number,
+        pageID: entry.pageID as number,
         authorID: entry.userID as number,
         overall: entry.overall as number,
         methods: entry.methods as number,
@@ -73,10 +93,10 @@ export async function createReview(newReview: Review) {
     const db = await openDb();
 
     const newEntry = await db.run(
-        "INSERT INTO Reviews (userID, courseID, overall, methods, workload, difficulty, comment, likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO Reviews (userID, pageID, overall, methods, workload, difficulty, comment, likes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         [
             newReview.authorID,
-            newReview.courseID,
+            newReview.pageID,
             newReview.overall,
             newReview.methods,
             newReview.workload,
