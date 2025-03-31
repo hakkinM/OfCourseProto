@@ -98,7 +98,6 @@ const ReviewCourseInput = ( { pageID }: { pageID: number } ) => {
                 <StarRating selected={difficulty} setSelected={setDifficulty} />
                 
               </div>
-              <HoverInfo/>
             </div>
             <DropDownSelection/>
             {/* comment container*/}

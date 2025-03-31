@@ -5,7 +5,7 @@ import { Review, User } from "@/app/types/types";
  * This file can be ran to create test data.
  */
 
-const testUsers: User[] = [
+export const testUsers: User[] = [
   {
     userID: 1,
     email: "velho@mail.com",
@@ -14,53 +14,150 @@ const testUsers: User[] = [
   },
   {
     userID: 2,
-    email: "bob@example.com",
-    username: "bob_the_builder",
-    password: "strongpassword",
+    email: "kettu91@example.com",
+    username: "kettu91", // "fox"
+    password: "salasana123",
   },
   {
     userID: 3,
-    email: "charlie@example.com",
-    username: "charlie_dev",
-    password: "mypassword123",
+    email: "satumetsae@example.com",
+    username: "satumetsae", // "fairy forest"
+    password: "turva456",
+  },
+  {
+    userID: 4,
+    email: "tahti_89@example.com",
+    username: "tahti_89", // "star"
+    password: "vahva789",
+  },
+  {
+    userID: 5,
+    email: "jokipoika@example.com",
+    username: "jokipoika", // "river boy"
+    password: "testi000",
+  },
+  {
+    userID: 6,
+    email: "hiljainenyksi@example.com",
+    username: "hiljainenyksi", // "quiet one"
+    password: "demo321",
   },
 ];
 
+
 export const testReviews: Review[] = [
   {
-    reviewID: 1,
-    pageID: 101,
-    authorID: 1,
-    overall: 5,
-    methods: 4,
-    workload: 3,
-    difficulty: 2,
-    comment: "Great course with engaging lectures!",
-    likes: 10,
-  },
-  {
     reviewID: 2,
-    pageID: 102,
-    authorID: 2,
-    overall: 3,
-    methods: 3,
-    workload: 5,
+    pageID: 123,
+    authorID: 1,
+    overall: 4,
+    methods: 5,
+    workload: 3,
     difficulty: 4,
-    comment: "Very challenging, but learned a lot.",
-    likes: 5,
+    comment: "Hyvin jäsennelty kokonaisuus. Paljon kaavoja, mutta opetustapa oli selkeä.",
+    likes: 2,
   },
   {
     reviewID: 3,
-    pageID: 101,
+    pageID: 123,
+    authorID: 2,
+    overall: 3,
+    methods: 3,
+    workload: 4,
+    difficulty: 4,
+    comment: "Työläs kokonaisuus, mutta opin paljon integraaleista ja differentiaaleista.",
+    likes: 1,
+  },
+  {
+    reviewID: 4,
+    pageID: 123,
     authorID: 3,
-    overall: 4,
+    overall: 5,
     methods: 5,
     workload: 2,
     difficulty: 3,
-    comment: "Good balance of theory and practice.",
-    likes: 8,
+    comment: "Erittäin kiinnostava kurssikokonaisuus! Hyvät materiaalit ja opetus.",
+    likes: 4,
+  },
+  {
+    reviewID: 5,
+    pageID: 123,
+    authorID: 4,
+    overall: 2,
+    methods: 2,
+    workload: 5,
+    difficulty: 5,
+    comment: "Vaikea kokonaisuus ilman hyvää taustaa. Työtä sai tehdä todella paljon.",
+    likes: 0,
+  },
+  {
+    reviewID: 6,
+    pageID: 123,
+    authorID: 5,
+    overall: 4,
+    methods: 4,
+    workload: 3,
+    difficulty: 3,
+    comment: "Hyvä johdanto matematiikan syventäviin aiheisiin. Suosittelen!",
+    likes: 3,
+  },
+  {
+    reviewID: 7,
+    pageID: 124,
+    authorID: 2,
+    overall: 4,
+    methods: 4,
+    workload: 3,
+    difficulty: 4,
+    comment: "Derivaatat alkoivat tuntua helpoilta lopulta. Integraalit vaativat enemmän aikaa.",
+    likes: 2,
+  },
+  {
+    reviewID: 8,
+    pageID: 124,
+    authorID: 3,
+    overall: 5,
+    methods: 5,
+    workload: 2,
+    difficulty: 3,
+    comment: "Erinomaiset esimerkit ja harjoitukset. Selkeytti paljon abstrakteja asioita.",
+    likes: 5,
+  },
+  {
+    reviewID: 9,
+    pageID: 124,
+    authorID: 2,
+    overall: 3,
+    methods: 3,
+    workload: 4,
+    difficulty: 4,
+    comment: "Opetus oli hieman nopeaa, mutta laskuharjoitukset auttoivat paljon.",
+    likes: 1,
+  },
+  {
+    reviewID: 10,
+    pageID: 124,
+    authorID: 4,
+    overall: 2,
+    methods: 2,
+    workload: 5,
+    difficulty: 5,
+    comment: "Kurssi oli todella haastava. Ilman aiempaa kokemusta vaikea pysyä mukana.",
+    likes: 0,
+  },
+  {
+    reviewID: 10,
+    pageID: 124,
+    authorID: 5,
+    overall: 4,
+    methods: 4,
+    workload: 3,
+    difficulty: 3,
+    comment: "Hyvä kokonaisuus, mutta integraalilaskennan osuus olisi voinut olla laajempi.",
+    likes: 2,
   },
 ];
+
 
 // CHECK IF USER HAS ALREADY CREATED TEST DATA!!
 // If test data is created twice, the console will be ridden with mystical errors.

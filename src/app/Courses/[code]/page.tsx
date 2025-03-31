@@ -16,15 +16,14 @@ const CoursePage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-black">
       <Header />
-
       <main className="flex-1 max-w-5xl mx-auto px-4 py-6 space-y-4">
         {/* Module Overview */}
         <div className="border rounded-lg bg-[#f3f6ff] p-4 flex flex-col md:flex-row items-start gap-4">
           <Image
-            src="/module-image.jpg"
-            alt="Module"
-            width={140}
-            height={140}
+            src="/images/math_course.png"
+            alt="Course_img"
+            width={340}
+            height={340}
             className="rounded object-cover"
           />
 

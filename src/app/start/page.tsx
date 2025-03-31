@@ -15,7 +15,7 @@ export default function HomePage() {
       <Header/>
       <main className="min-h-[60vh] flex items-center justify-center bg-white px-4">
       <div className="w-full max-w-md space-y-6 text-center">
-        <h1 className="text-3xl font-bold">Tervetuloa</h1>
+        <h1 className="text-3xl font-bold">OfCourse</h1>
         <div className="flex flex-col gap-4">
           <button
             onClick={() => router.push("/find")}

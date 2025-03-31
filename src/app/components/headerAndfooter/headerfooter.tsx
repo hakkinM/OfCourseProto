@@ -4,10 +4,10 @@ export const Header = () => {
     const router = useRouter();
     return (
         <header className="bg-blue-200 p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">OfCourse</h1>
+        <button className="text-2xl font-semibold hover:text-white" onClick={() => router.push('/start')}>OfCourse</button>
         <div className="space-x-2">
           <button
-            className="bg-gray-300 px-4 py-1 rounded"
+            className="bg-gray-200 px-4 py-1 rounded"
             onClick={() => router.push('/profile')}
           >
             Profiili

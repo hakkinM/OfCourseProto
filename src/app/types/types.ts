@@ -22,7 +22,7 @@ export interface Ratings {
     difficultyRatings: number[];
     methodsRatings: number[];
     workloadRatings: number[];
-  }
+}
 
 export interface Course {
     courseID: number,

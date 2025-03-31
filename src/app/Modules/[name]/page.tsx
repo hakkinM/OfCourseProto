@@ -44,10 +44,10 @@ const ModuleDetail = () => {
         {/* Module Overview */}
         <div className="border rounded-lg bg-[#f3f6ff] p-4 flex flex-col md:flex-row items-start gap-4">
           <Image
-            src="/module-image.jpg"
+            src="/images/math_minor.png"
             alt="Module"
-            width={140}
-            height={140}
+            width={340}
+            height={340}
             className="rounded object-cover"
           />
 
